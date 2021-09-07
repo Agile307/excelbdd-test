@@ -13,17 +13,17 @@ import com.excelbdd.Behavior;
 import com.excelbdd.TestWizard;
 
 @RunWith(Parameterized.class)
-public class ExcelJunit4Test {
-
+public class ExcelBDDJunit4Test {
+	
 	Map<String, String> parameterMap;
 
 	@Parameters
 	public static Collection<Object[]> prepareData() throws IOException {
 		String filePath = "src/test/resources/excel.xlsx";
-		return Behavior.getExampleCollection(filePath, "FirstSheet", "Scenario", "Scenario3");
+		return Behavior.getExampleCollection(filePath, "FirstSheet");
 	}
 
-	public ExcelJunit4Test(Map<String, String> map) {
+	public ExcelBDDJunit4Test(Map<String, String> map) {
 		this.parameterMap = map;
 	}
 

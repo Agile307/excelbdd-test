@@ -12,8 +12,7 @@ import com.excelbdd.TestWizard;
 class ExcelBDDSimplestTest {
 
 	static Stream<Map<String, String>> provideExampleList() throws IOException {
-		String filePath = TestWizard.getExcelBDDStartPath("excelbdd-test")
-				+ "excelbdd-test\\src\\test\\resources\\excel.xlsx";
+		String filePath = "src/test/resources/excel.xlsx";
 		return Behavior.getExampleStream(filePath);
 	}
 
