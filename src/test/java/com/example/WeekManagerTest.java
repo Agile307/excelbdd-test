@@ -1,5 +1,4 @@
-package com.excelbdd.test;
-
+package com.example;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,28 +12,20 @@ import org.junit.jupiter.params.provider.MethodSource;
 import com.excelbdd.Behavior;
 import com.excelbdd.TestWizard;
 
-class TestDayInJunit5 {
+class WeekManagerTest {
 
 	static Stream<Map<String, String>> provideExampleList() throws IOException {
-//		String filePath = TestWizard.getExcelBDDStartPath("excelbdd-test")
-//				+ "excelbdd-test\\src\\test\\resources\\excel.xlsx";
 		String filePath = "src/test/resources/excel.xlsx";
-		return Behavior.getExampleStream(filePath, "WeekDayCheck");
+		return Behavior.getExampleStream(filePath, "FridayCheck");
 	}
 
 	@ParameterizedTest(name = "#{index} - Test with Map : {0}")
 	@MethodSource("provideExampleList")
 	final void test(Map<String, String> mapParams) {
-		String actualAnswer;
-		System.out.println("Day " + mapParams.get("Day"));
-		System.out.println("DayOfWeek " + mapParams.get("DayOfWeek"));
-		System.out.println("Answer " + mapParams.get("Answer"));
-		if (mapParams.get("Day").equals(mapParams.get("DayOfWeek"))) {
-			actualAnswer = "Yup";
-		} else {
-			actualAnswer = "Nope";
-		}
+		TestWizard.showMap(mapParams);
+		String actualAnswer = WeekManager.isFriday(mapParams.get("Day"));
 		assertEquals(mapParams.get("Answer"), actualAnswer);
+
 	}
 
 }
